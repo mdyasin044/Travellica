@@ -1,0 +1,13 @@
+appdirs==1.4.4
+asgiref==3.3.1
+distlib==0.3.1
+Django==3.1.4
+filelock==3.0.12
+importlib-metadata==3.1.1
+pytz==2020.4
+six==1.15.0
+sqlparse==0.4.1
+virtualenv==20.2.2
+virtualenvwrapper-win==1.2.6
+whitenoise==5.2.0
+zipp==3.4.0
