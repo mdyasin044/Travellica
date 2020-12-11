@@ -40,7 +40,10 @@
 										<li><a href="about.html">About us</a></li>
 									</ul>
 								</nav>
-								<div class="header_phone ml-auto">Sign in | Sign up</div>
+								<div class="header_phone ml-auto">
+									<a href="#" data-toggle="modal" data-target="#signInModal">Sign in </a>|
+									<a href="#" data-toggle="modal" data-target="#signOutModal">Sign up </a>
+								</div>
 
 								<!-- Hamburger -->
 
@@ -87,7 +90,10 @@
 				</ul>
 			</div>
 			<div class="menu_social">
-				<div class="menu_phone ml-auto">Sign in | Sign up</div>
+				<div class="menu_phone ml-auto">
+					<a href="#" data-toggle="modal" data-target="#signInModal">Sign in </a>|
+					<a href="#" data-toggle="modal" data-target="#signOutModal">Sign up </a>
+				</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -163,48 +169,88 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 
 				<div class="home_page_nav">
 					<ul class="d-flex flex-column align-items-end justify-content-end">
 						<li><a href="#" data-scroll-to="#destinations">Places<span>01</span></a></li>
-						<li><a href="#" data-scroll-to="#testimonials">Post<span>02</span></a></li>
-						<li><a href="#" data-scroll-to="#news">Contributors<span>03</span></a></li>
+						<li><a href="#" data-scroll-to="#news">Post<span>02</span></a></li>
+						<li><a href="#" data-scroll-to="#contributors">Contributors<span>03</span></a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
-		<!-- Search -->
-		<br><br>
-		<div class="home_search">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="home_search_container">
-							<div class="home_search_title">Search for your trip</div>
-							<div class="home_search_content">
-								<form action="#" class="home_search_form" id="home_search_form">
-									<div
-										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-										<input type="text" class="search_input search_input_1" placeholder="City"
-											required="required">
-										<input type="text" class="search_input search_input_2" placeholder="Departure"
-											required="required">
-										<input type="text" class="search_input search_input_3" placeholder="Arrival"
-											required="required">
-										<input type="text" class="search_input search_input_4" placeholder="Budget"
-											required="required">
-										<button class="home_search_button">search</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
+		<!-- Sign in -->
+		<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="signInModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			  </div>
 			</div>
+		  </div>
 		</div>
+
+		<!-- Sign up -->
+		<div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="signOutModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<!-- Search -->
+<!--		<br><br>-->
+<!--		<div class="home_search">-->
+<!--			<div class="container">-->
+<!--				<div class="row">-->
+<!--					<div class="col">-->
+<!--						<div class="home_search_container">-->
+<!--							<div class="home_search_title">Search for your trip</div>-->
+<!--							<div class="home_search_content">-->
+<!--								<form action="#" class="home_search_form" id="home_search_form">-->
+<!--									<div-->
+<!--										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">-->
+<!--										<input type="text" class="search_input search_input_1" placeholder="City"-->
+<!--											required="required">-->
+<!--										<input type="text" class="search_input search_input_2" placeholder="Departure"-->
+<!--											required="required">-->
+<!--										<input type="text" class="search_input search_input_3" placeholder="Arrival"-->
+<!--											required="required">-->
+<!--										<input type="text" class="search_input search_input_4" placeholder="Budget"-->
+<!--											required="required">-->
+<!--										<button class="home_search_button">search</button>-->
+<!--									</div>-->
+<!--								</form>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
 
 		<!-- Destinations -->
 
@@ -315,7 +361,6 @@
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -334,6 +379,14 @@
 
 		<div class="news" id="news">
 			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_subtitle">shared amazing experience</div>
+						<div class="section_title">
+							<h2>Latest Reviews</h2>
+						</div>
+					</div>
+				</div> <br> <br>
 				<div class="row">
 					<div class="col-xl-8">
 						<div class="news_container">
@@ -439,9 +492,15 @@
 		</div>
 
 		<!-- Contributors -->
-		  <section class="Contributors text-center bg-light">
+		  <div class="Contributors text-center bg-light" id="contributors">
+			  <div class="row">
+				<div class="col text-center">
+					<div class="section_title">
+						<h2>Top Contributors</h2>
+					</div>
+				</div>
+			  </div> <br> <br>
 			<div class="container">
-			  <h2 class="mb-5">Top Contributors</h2>
 			  <div class="row justify-content-center">
 				<div class="col-lg-2">
 				  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
@@ -466,7 +525,7 @@
 				</div>
 			  </div>
 			</div>
-		  </section>
+		  </div>
 
 		<!-- Footer -->
 
