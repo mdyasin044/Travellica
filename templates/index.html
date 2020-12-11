@@ -16,6 +16,13 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+
+	<!-- form stuffs -->
+
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
 </head>
 
 <body>
@@ -182,46 +189,71 @@
 		</div>
 
 		<!-- Sign in -->
-		<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
 			  <div class="modal-header">
-				<h5 class="modal-title" id="signInModalLabel">Modal title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
+				<h5 class="modal-title" id="signInModalLabel">Login</h5>
 			  </div>
 			  <div class="modal-body">
 				...
 			  </div>
 			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary">Login</button>
 			  </div>
 			</div>
 		  </div>
 		</div>
 
 		<!-- Sign up -->
-		<div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+		<div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-hidden="true">
+
 		  <div class="modal-dialog" role="document">
+
 			<div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="signOutModalLabel">Modal title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			  </div>
-			  <div class="modal-body">
-				...
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			  </div>
+
+				<div class="modal-body">
+					<div class="wrap-login100">
+					<div class="login100-pic js-tilt" data-tilt>
+						<img src="{% static 'images/img-01.png' %}" alt="IMG">
+					</div>
+
+					<form class="login100-form validate-form">
+						<span class="login100-form-title">
+							Member Login
+						</span>
+
+						<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+							<input class="input100" type="text" name="email" placeholder="Email">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate = "Password is required">
+							<input class="input100" type="password" name="pass" placeholder="Password">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn">
+								Login
+							</button>
+						</div>
+					</form>
+
+				</div>
 			</div>
 		  </div>
 		</div>
+			</div>
+
 		<!-- Search -->
 <!--		<br><br>-->
 <!--		<div class="home_search">-->
@@ -652,6 +684,16 @@
 						<script src="{% static 'plugins/easing/easing.js' %}"></script>
 						<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
 						<script src="{% static 'js/custom.js' %}"></script>
+
+						<!-- form stuff -->
+
+						<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+						<script >
+							$('.js-tilt').tilt({
+								scale: 1.1
+							})
+						</script>
+						<script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
