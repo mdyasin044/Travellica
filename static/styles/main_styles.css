@@ -283,7 +283,7 @@ section
 }
 .header.scrolled .header_content
 {
-	height: 90px;
+	height: 60px;
 }
 .header_content_inner
 {
@@ -1032,16 +1032,16 @@ section
 {
 	width: 100%;
 	background: #FFFFFF;
-	padding-top: 115px;
+	padding-top: 30px;
 	padding-bottom: 115px;
 }
 .news_post:not(:last-child)
 {
-	margin-bottom: 68px;
+	margin-bottom: 40px;
 }
 .news_post_image
 {
-	width: 34.8%;
+	width: 60%;
 }
 .news_post_image img
 {
@@ -1049,8 +1049,8 @@ section
 }
 .news_post_content
 {
-	width: 65.2%;
-	padding-left: 30px;
+	width: 40%;
+	padding-left: 20px;
 }
 .news_post_date div:first-child
 {
