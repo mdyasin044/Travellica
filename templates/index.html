@@ -9,6 +9,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Travello template project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- form stuffs -->
+
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+	<!-- for the rest -->
+
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
 	<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
@@ -16,12 +25,6 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
-
-	<!-- form stuffs -->
-
-	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 </head>
 
@@ -48,7 +51,7 @@
 									</ul>
 								</nav>
 								<div class="header_phone ml-auto">
-									<a href="#" data-toggle="modal" data-target="#signInModal">Sign in </a>|
+									<a href="#" data-toggle="modal" data-target="#signInModal">Sign in</a>|
 									<a href="#" data-toggle="modal" data-target="#signUpModal">Sign up </a>
 								</div>
 
@@ -181,7 +184,7 @@
 				<div class="home_page_nav">
 					<ul class="d-flex flex-column align-items-end justify-content-end">
 						<li><a href="#" data-scroll-to="#destinations">Places<span>01</span></a></li>
-						<li><a href="#" data-scroll-to="#news">Post<span>02</span></a></li>
+						<li><a href="#" data-scroll-to="#news">Reviews<span>02</span></a></li>
 						<li><a href="#" data-scroll-to="#contributors">Contributors<span>03</span></a></li>
 					</ul>
 				</div>
@@ -189,13 +192,19 @@
 		</div>
 
 		<!-- Sign Up -->
+
 		<div class="modal fade bd-example-modal-lg" id="signUpModal" tabindex="-1" role="dialog" aria-hidden="true">
 		  <div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
 					<div class="row justify-content-center align-items-center" style="padding: 10px;">
 						<div class="col">
-							<img class="img-fluid rounded-circle mb-3" src="{% static 'images/img-01.jpg' %}" alt="">
+							<img class="img-fluid rounded-circle mb-3" src="{% static 'images/signupicon.png' %}" alt="" width="200" height="200">
+
+							<div class="wrap-input100">
+								<input class="input100" type="text" name="biodata" placeholder="Bio" style="padding: 0 30px 0 30px;">
+								<span class="focus-input100"></span>
+							</div>
 						</div>
 
 						<div class="col">
@@ -204,20 +213,24 @@
 									Member Register Form
 								</span>
 
-								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-									<input class="input100" type="text" name="email" placeholder="Email">
+								<div class="wrap-input100 validate-input" data-validate = "Input a valid username">
+									<input class="input100" type="text" name="username" placeholder="User Name" style="padding: 0 30px 0 30px;">
 									<span class="focus-input100"></span>
-									<span class="symbol-input100">
-										<i class="fa fa-envelope" aria-hidden="true"></i>
-									</span>
+								</div>
+
+								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+									<input class="input100" type="text" name="email" placeholder="Email" style="padding: 0 30px 0 30px;">
+									<span class="focus-input100"></span>
 								</div>
 
 								<div class="wrap-input100 validate-input" data-validate = "Password is required">
-									<input class="input100" type="password" name="pass" placeholder="Password">
+									<input class="input100" type="text" name="pass" placeholder="Password" style="padding: 0 30px 0 30px;">
 									<span class="focus-input100"></span>
-									<span class="symbol-input100">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-									</span>
+								</div>
+
+								<div class="wrap-input100 validate-input" data-validate = "Confirm Password is required">
+									<input class="input100" type="text" name="confirm_pass" placeholder="Confirm Password" style="padding: 0 30px 0 30px;">
+									<span class="focus-input100"></span>
 								</div>
 
 								<div class="container-login100-form-btn">
