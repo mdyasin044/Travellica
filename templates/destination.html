@@ -93,10 +93,10 @@
 			<div class="menu_content">
 				<ul>
 					<li><a href="../">Home</a></li>
-					<li><a href="about.html">About us</a></li>
-					<li><a href="#">Popular</a></li>
-					<li><a href="news.html">Latest</a></li>
-					<li><a href="contact.html">Contributors</a></li>
+					<li><a href="#">About us</a></li>
+					<li><a href="destination">Popular</a></li>
+					<li><a href="destination">Latest</a></li>
+					<li><a href="#">Contributors</a></li>
 				</ul>
 			</div>
 			<div class="menu_social">
@@ -112,82 +112,6 @@
 					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 				</ul>
-			</div>
-		</div>
-
-		<!-- Home -->
-
-		<div class="home">
-
-			<!-- Home Slider -->
-			<div class="home_slider_container">
-				<div class="owl-carousel owl-theme home_slider">
-
-					<!-- Slide -->
-					<div class="owl-item">
-						<div class="background_image"
-							style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
-						<div class="home_slider_content_container">
-							<div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="home_slider_content">
-											<div class="home_title">
-												<h2>Let us take you away</h2>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Slide -->
-					<div class="owl-item">
-						<div class="background_image"
-							style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
-						<div class="home_slider_content_container">
-							<div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="home_slider_content">
-											<div class="home_title">
-												<h2>Let us take you away</h2>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Slide -->
-					<div class="owl-item">
-						<div class="background_image"
-							style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
-						<div class="home_slider_content_container">
-							<div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="home_slider_content">
-											<div class="home_title">
-												<h2>Let us take you away</h2>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="home_page_nav">
-					<ul class="d-flex flex-column align-items-end justify-content-end">
-						<li><a href="#" data-scroll-to="#destinations">Places<span>01</span></a></li>
-						<li><a href="#" data-scroll-to="#news">Reviews<span>02</span></a></li>
-						<li><a href="#" data-scroll-to="#contributors">Contributors<span>03</span></a></li>
-					</ul>
-				</div>
 			</div>
 		</div>
 
@@ -290,173 +214,14 @@
 		  </div>
 		</div>
 
-		<!-- Search -->
-<!--		<br><br>-->
-<!--		<div class="home_search">-->
-<!--			<div class="container">-->
-<!--				<div class="row">-->
-<!--					<div class="col">-->
-<!--						<div class="home_search_container">-->
-<!--							<div class="home_search_title">Search for your trip</div>-->
-<!--							<div class="home_search_content">-->
-<!--								<form action="#" class="home_search_form" id="home_search_form">-->
-<!--									<div-->
-<!--										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">-->
-<!--										<input type="text" class="search_input search_input_1" placeholder="City"-->
-<!--											required="required">-->
-<!--										<input type="text" class="search_input search_input_2" placeholder="Departure"-->
-<!--											required="required">-->
-<!--										<input type="text" class="search_input search_input_3" placeholder="Arrival"-->
-<!--											required="required">-->
-<!--										<input type="text" class="search_input search_input_4" placeholder="Budget"-->
-<!--											required="required">-->
-<!--										<button class="home_search_button">search</button>-->
-<!--									</div>-->
-<!--								</form>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-
 		<!-- Destinations -->
 
-		<div class="destinations" id="destinations">
-			<div class="container">
-				<div class="row">
-					<div class="col text-center">
-						<div class="section_subtitle">simply amazing places</div>
-						<div class="section_title">
-							<h2>Popular Destinations</h2>
-						</div>
-					</div>
-				</div>
-				<div class="row destinations_row">
-					<div class="col">
-						<div class="destinations_container item_grid">
-
-							{% for dest in dests %}
-							<!-- Destination -->
-							<div class="destination item">
-								<div class="destination_image">
-									<div class="login100-pic js-tilt" data-tilt style="margin: 20px;">
-										<img src="{{baseUrl}}/{{dest.img}}" alt="">
-									</div>
-									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
-								</div>
-								<div class="destination_content">
-									<div class="destination_title"><a href="destinations.html">{{dest.name}}</a>
-									</div>
-									<div class="destination_subtitle">
-										<p>{{dest.desc}}</p>
-									</div>
-									<div class="destination_price">From ${{dest.price}}</div>
-								</div>
-							</div>
-
-							{% endfor %}
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Testimonials -->
-
-		<div class="testimonials" id="testimonials">
-			<div class="parallax_background parallax-window" data-parallax="scroll"
-				data-image-src="{% static 'images/testimonials.jpg' %}" data-speed="0.8"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col text-center">
-						<div class="section_subtitle">simply amazing places</div>
-						<div class="section_title">
-							<h2>Testimonials</h2>
-						</div>
-					</div>
-				</div>
-				<div class="row testimonials_row">
-					<div class="col">
-
-						<!-- Testimonials Slider -->
-						<div class="testimonials_slider_container">
-							<div class="owl-carousel owl-theme testimonials_slider">
-
-								<!-- Slide -->
-								<div class="owl-item text-center">
-									<div class="testimonial">Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit.
-										lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur
-										quis vehicula
-										odio.</div>
-									<div class="testimonial_author">
-										<div
-											class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-											<div>john turner,</div>
-											<div>client</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Slide -->
-								<div class="owl-item text-center">
-									<div class="testimonial">Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit.
-										lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur
-										quis vehicula
-										odio.</div>
-									<div class="testimonial_author">
-										<div
-											class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-											<div>john turner,</div>
-											<div>client</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Slide -->
-								<div class="owl-item text-center">
-									<div class="testimonial">Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit.
-										lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur
-										quis vehicula
-										odio.</div>
-									<div class="testimonial_author">
-										<div
-											class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-											<div>john turner,</div>
-											<div>client</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="test_nav">
-				<ul class="d-flex flex-column align-items-end justify-content-end">
-					<li><a href="#">City Breaks Clients<span>01</span></a></li>
-					<li><a href="#">Cruises Clients<span>02</span></a></li>
-					<li><a href="#">All Inclusive Clients<span>03</span></a></li>
-				</ul>
-			</div>
-		</div>
+		<img src="{% static 'images/destinationheader.jpg' %}" height="150px" width="100%">
 
 		<!-- News -->
 
 		<div class="news" id="news">
 			<div class="container">
-				<div class="row">
-					<div class="col text-center">
-						<div class="section_subtitle">shared amazing experience</div>
-						<div class="section_title">
-							<h2>Latest Reviews</h2>
-						</div>
-					</div>
-				</div> <br> <br>
 				<div class="row">
 					<div class="col-xl-8">
 						<div class="news_container">
@@ -560,43 +325,7 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- Contributors -->
-		  <div class="Contributors text-center bg-light" id="contributors">
-			  <div class="row">
-				<div class="col text-center">
-					<div class="section_title">
-						<h2>Top Contributors</h2>
-					</div>
-				</div>
-			  </div> <br> <br>
-			<div class="container">
-			  <div class="row justify-content-center">
-				<div class="col-lg-2">
-				  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-					<img class="img-fluid rounded-circle mb-3" src="{% static 'images/t1.jpg' %}" alt="">
-					<h5>Margaret E.</h5>
-					<p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
-				  </div>
-				</div>
-				<div class="col-lg-2">
-				  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-					<img class="img-fluid rounded-circle mb-3" src="{% static 'images/t2.jpg' %}" alt="">
-					<h5>Fred S.</h5>
-					<p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
-				  </div>
-				</div>
-				<div class="col-lg-2">
-				  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-					<img class="img-fluid rounded-circle mb-3" src="{% static 'images/t3.jpg' %}" alt="">
-					<h5>Sarah W.</h5>
-					<p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-
+		
 		<!-- Footer -->
 
 		<footer class="footer">
