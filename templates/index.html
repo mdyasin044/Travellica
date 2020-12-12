@@ -189,18 +189,47 @@
 		</div>
 
 		<!-- Sign Up -->
-		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
+		<div class="modal fade bd-example-modal-lg" id="signUpModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="signUpModalLabel">Login</h5>
-			  </div>
-			  <div class="modal-body">
-				...
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary">Login</button>
+				<div class="modal-body">
+					<div class="row justify-content-center align-items-center" style="padding: 10px;">
+						<div class="col">
+							<div class="login100-pic js-tilt" data-tilt style="margin: 20px;">
+								<img src="{% static 'images/img-01.jpg' %}" alt="IMG">
+							</div>
+						</div>
+
+						<div class="col">
+							<form class="login100-form validate-form">
+								<span class="login100-form-title">
+									Member Register Form
+								</span>
+
+								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+									<input class="input100" type="text" name="email" placeholder="Email">
+									<span class="focus-input100"></span>
+									<span class="symbol-input100">
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+									</span>
+								</div>
+
+								<div class="wrap-input100 validate-input" data-validate = "Password is required">
+									<input class="input100" type="password" name="pass" placeholder="Password">
+									<span class="focus-input100"></span>
+									<span class="symbol-input100">
+										<i class="fa fa-lock" aria-hidden="true"></i>
+									</span>
+								</div>
+
+								<div class="container-login100-form-btn">
+									<button class="login100-form-btn">
+										Sign up
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
 			  </div>
 			</div>
 		  </div>
@@ -213,41 +242,41 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<div class="row justify-content-center align-items-center" style="padding: 50px;">
-					<div class="login100-pic js-tilt" data-tilt style="margin: 10px;">
-						<img src="{% static 'images/img-01.jpg' %}" alt="IMG">
+						<div class="login100-pic js-tilt" data-tilt style="margin: 20px;">
+							<img src="{% static 'images/img-01.jpg' %}" alt="IMG">
+						</div>
+
+						<form class="login100-form validate-form">
+							<span class="login100-form-title">
+								Member Login
+							</span>
+
+							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+								<input class="input100" type="text" name="email" placeholder="Email">
+								<span class="focus-input100"></span>
+								<span class="symbol-input100">
+									<i class="fa fa-envelope" aria-hidden="true"></i>
+								</span>
+							</div>
+
+							<div class="wrap-input100 validate-input" data-validate = "Password is required">
+								<input class="input100" type="password" name="pass" placeholder="Password">
+								<span class="focus-input100"></span>
+								<span class="symbol-input100">
+									<i class="fa fa-lock" aria-hidden="true"></i>
+								</span>
+							</div>
+
+							<div class="container-login100-form-btn">
+								<button class="login100-form-btn">
+									Login
+								</button>
+							</div>
+						</form>
 					</div>
-
-					<form class="login100-form validate-form">
-						<span class="login100-form-title">
-							Member Login
-						</span>
-
-						<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-							<input class="input100" type="text" name="email" placeholder="Email">
-							<span class="focus-input100"></span>
-							<span class="symbol-input100">
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-							</span>
-						</div>
-
-						<div class="wrap-input100 validate-input" data-validate = "Password is required">
-							<input class="input100" type="password" name="pass" placeholder="Password">
-							<span class="focus-input100"></span>
-							<span class="symbol-input100">
-								<i class="fa fa-lock" aria-hidden="true"></i>
-							</span>
-						</div>
-
-						<div class="container-login100-form-btn">
-							<button class="login100-form-btn">
-								Login
-							</button>
-						</div>
-					</form>
 				</div>
 			</div>
 		  </div>
-		</div>
 		</div>
 
 		<!-- Search -->
@@ -300,7 +329,9 @@
 							<!-- Destination -->
 							<div class="destination item">
 								<div class="destination_image">
-									<img src="{{baseUrl}}/{{dest.img}}" alt="">
+									<div class="login100-pic js-tilt" data-tilt style="margin: 20px;">
+										<img src="{{baseUrl}}/{{dest.img}}" alt="">
+									</div>
 									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								</div>
 								<div class="destination_content">
