@@ -49,7 +49,7 @@
 								</nav>
 								<div class="header_phone ml-auto">
 									<a href="#" data-toggle="modal" data-target="#signInModal">Sign in </a>|
-									<a href="#" data-toggle="modal" data-target="#signOutModal">Sign up </a>
+									<a href="#" data-toggle="modal" data-target="#signUpModal">Sign up </a>
 								</div>
 
 								<!-- Hamburger -->
@@ -99,7 +99,7 @@
 			<div class="menu_social">
 				<div class="menu_phone ml-auto">
 					<a href="#" data-toggle="modal" data-target="#signInModal">Sign in </a>|
-					<a href="#" data-toggle="modal" data-target="#signOutModal">Sign up </a>
+					<a href="#" data-toggle="modal" data-target="#signUpModal">Sign up </a>
 				</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
@@ -188,12 +188,12 @@
 			</div>
 		</div>
 
-		<!-- Sign in -->
-		<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+		<!-- Sign Up -->
+		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
 			  <div class="modal-header">
-				<h5 class="modal-title" id="signInModalLabel">Login</h5>
+				<h5 class="modal-title" id="signUpModalLabel">Login</h5>
 			  </div>
 			  <div class="modal-body">
 				...
@@ -206,18 +206,15 @@
 		  </div>
 		</div>
 
-		<!-- Sign up -->
+		<!-- Sign In -->
 
-		<div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-hidden="true">
-
-		  <div class="modal-dialog" role="document">
-
+		<div class="modal fade bd-example-modal-lg" id="signInModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
-
 				<div class="modal-body">
-					<div class="wrap-login100">
-					<div class="login100-pic js-tilt" data-tilt>
-						<img src="{% static 'images/img-01.png' %}" alt="IMG">
+					<div class="row justify-content-center align-items-center">
+					<div class="login100-pic js-tilt" data-tilt style="margin: 10px;">
+						<img src="{% static 'images/img-01.jpg' %}" alt="IMG">
 					</div>
 
 					<form class="login100-form validate-form">
@@ -247,12 +244,11 @@
 							</button>
 						</div>
 					</form>
-
 				</div>
 			</div>
 		  </div>
 		</div>
-			</div>
+		</div>
 
 		<!-- Search -->
 <!--		<br><br>-->
