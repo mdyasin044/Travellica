@@ -1384,3 +1384,41 @@ section
     width: 100%;
 	height: 100%;
 }
+
+.review_title
+{
+	color: #000000;
+	margin-top: 0px;
+}
+
+.review_location
+{
+	color: #808080;
+	margin-top: 0px;
+}
+
+.reviewer_name
+{
+    color: #000000;
+	margin-top: 0px;
+}
+
+.review_description
+{
+    color: #000000;
+	margin-left: 10px;
+}
+
+.review_likes_comments
+{
+    color: #000000;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.review_comments
+{
+    color: #000000;
+	margin-left: 10px;
+	margin-top: 5px;
+}
