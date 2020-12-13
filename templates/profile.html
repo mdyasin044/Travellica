@@ -214,6 +214,62 @@
 		  </div>
 		</div>
 
+		<!-- create a post -->
+
+		<div class="modal fade bd-example-modal-lg" id="createPostModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row justify-content-center align-items-center" style="padding: 10px;">
+						<span class="login100-form-title">
+							Member Register Form
+						</span>
+						<div class="col-xl-5">
+							<img class="img-fluid rounded-circle mb-3" src="{% static 'images/signupicon.png' %}" alt="" width="200" height="200">
+
+							<input class="timepicker" data-date-format="mm/dd/yyyy">
+
+							<div class="wrap-input100">
+								<input class="input100" type="text" name="biodata" placeholder="Bio" style="padding: 0 30px 0 30px;">
+								<span class="focus-input100"></span>
+							</div>
+						</div>
+
+						<div class="col-xl-5">
+							<form class="login100-form validate-form">
+								<div class="wrap-input100 validate-input" data-validate = "Input a valid username">
+									<input class="input100" type="text" name="username" placeholder="User Name" style="padding: 0 30px 0 30px;">
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+									<input class="input100" type="text" name="email" placeholder="Email" style="padding: 0 30px 0 30px;">
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="wrap-input100 validate-input" data-validate = "Password is required">
+									<input class="input100" type="text" name="pass" placeholder="Password" style="padding: 0 30px 0 30px;">
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="wrap-input100 validate-input" data-validate = "Confirm Password is required">
+									<input class="input100" type="text" name="confirm_pass" placeholder="Confirm Password" style="padding: 0 30px 0 30px;">
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="container-login100-form-btn">
+									<button class="login100-form-btn">
+										Sign up
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
 		<!-- Top Image -->
 
 <!--		<img src="{% static 'images/destinationheader.jpg' %}" height="180px" width="100%">-->
@@ -498,10 +554,6 @@
 			</div>
 		</div>
 
-		<div class="floating_button">
-			<li><a href="../"><i class="fa fa-plus my-float"></i></a></li>
-		</div>
-
 		<!-- Footer -->
 
 		<footer class="footer">
@@ -615,6 +667,13 @@
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</div>
 							</footer>
+
+							<div class="floating_button">
+								<li><a href="#" data-toggle="modal" data-target="#createPostModal">
+									<i class="fa fa-plus my-float"></i></a>
+								</li>
+							</div>
+
 						</div>
 
 						<script src="{% static 'js/jquery-3.2.1.min.js' %}">
