@@ -16,6 +16,7 @@
 9. Testimonials
 10. News
 11. Footer
+12. Reviews
 
 
 ******************************/
@@ -1361,4 +1362,25 @@ section
 .footer_contact_list ul li:not(:last-child)
 {
 	margin-bottom: 7px;
+}
+
+/*********************************
+12. Reviews
+*********************************/
+
+.review
+{
+	width: 100%;
+	height: max-content;
+}
+.review_slider_container
+{
+	width: 100%;
+	height: 400px;
+}
+
+.review_container
+{
+    width: 100%;
+	height: 100%;
 }
