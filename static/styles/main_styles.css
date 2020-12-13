@@ -279,6 +279,17 @@ section
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
+.header_content_hidden
+{
+	width: 100%;
+	height: 148px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+	visibility: hidden;
+}
 .header.scrolled
 {
 	background: rgba(24,24,24,0.6);
@@ -286,6 +297,11 @@ section
 .header.scrolled .header_content
 {
 	height: 60px;
+}
+.header.scrolled .header_content_hidden
+{
+	height: 60px;
+	visibility: visible;
 }
 .header_content_inner
 {
@@ -1435,6 +1451,25 @@ section
 {
 	width: 100%;
 	height: 220px;
-	margin-top: 20px;
+	margin-top: 5px;
 	color: #000000;
+}
+
+.floating_button
+{
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 80px;
+	right: 40px;
+	background-color: #0C9fff;
+	color: #ffffff;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float
+{
+	margin-top:22px;
 }

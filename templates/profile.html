@@ -38,12 +38,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="header_content_hidden d-flex flex-row align-items-center justify-content-start">
 							<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
 								<div class="logo"><a href="../">Travellica</a></div>
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
-										<li class="active"><a href="../">Home</a></li>
+										<li><a href="../">Home</a></li>
 										<li><a href="destination">Popular</a></li>
 										<li><a href="destination">Latest</a></li>
 										<li><a href="#">Contributors</a></li>
@@ -214,9 +214,9 @@
 		  </div>
 		</div>
 
-		<!-- Destinations -->
+		<!-- Top Image -->
 
-		<img src="{% static 'images/destinationheader.jpg' %}" height="180px" width="100%">
+<!--		<img src="{% static 'images/destinationheader.jpg' %}" height="180px" width="100%">-->
 
         <!-- Profile Info -->
 
@@ -251,10 +251,6 @@
 				<div class="row">
 					<div class="col-xl-8">
 						<div class="review_container">
-							<div class="section_title">
-								<h4>Popular Destinations</h4>
-							</div>
-							<br>
 
 							<!-- Reviews -->
 							<div class="review bg-light">
@@ -339,7 +335,8 @@
 									</div>
 								</div>
 							</div>
-														<!-- Reviews -->
+
+							<!-- Reviews -->
 							<div class="review bg-light">
 
 								<!-- Review Slider -->
@@ -499,6 +496,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="floating_button">
+			<li><a href="../"><i class="fa fa-plus my-float"></i></a></li>
 		</div>
 
 		<!-- Footer -->
