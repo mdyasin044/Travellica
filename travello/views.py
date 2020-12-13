@@ -31,3 +31,7 @@ def index(request):
 
 def destination(request):
     return render(request, "destination.html")
+
+
+def profile(request):
+    return render(request, "profile.html")

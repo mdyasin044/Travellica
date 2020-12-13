@@ -17,6 +17,7 @@
 10. News
 11. Footer
 12. Reviews
+13. Profile
 
 
 ******************************/
@@ -1033,7 +1034,7 @@ section
 {
 	width: 100%;
 	background: #FFFFFF;
-	padding-top: 30px;
+	padding-top: 10px;
 	padding-bottom: 115px;
 }
 .news_post:not(:last-child)
@@ -1372,6 +1373,7 @@ section
 {
 	width: 100%;
 	height: max-content;
+	margin-bottom: 20px;
 }
 .review_slider_container
 {
@@ -1389,12 +1391,14 @@ section
 {
 	color: #000000;
 	margin-top: 0px;
+	margin-left: 10px;
 }
 
 .review_location
 {
 	color: #808080;
 	margin-top: 0px;
+	margin-left: 10px;
 }
 
 .reviewer_name
@@ -1421,4 +1425,16 @@ section
     color: #000000;
 	margin-left: 10px;
 	margin-top: 5px;
+}
+
+/*********************************
+13. Profile
+*********************************/
+
+.profile
+{
+	width: 100%;
+	height: 220px;
+	margin-top: 20px;
+	color: #000000;
 }
