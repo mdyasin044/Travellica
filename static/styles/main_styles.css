@@ -1473,3 +1473,11 @@ section
 {
 	margin-top:22px;
 }
+
+.image_scroll_box
+{
+    height: 200px;
+    width:100%;
+    white-space: nowrap;
+    overflow: auto;
+}

@@ -220,51 +220,53 @@
 		  <div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-					<div class="row justify-content-center align-items-center" style="padding: 10px;">
-						<span class="login100-form-title">
-							Member Register Form
-						</span>
-						<div class="col-xl-5">
-							<img class="img-fluid rounded-circle mb-3" src="{% static 'images/signupicon.png' %}" alt="" width="200" height="200">
+						<div class="review_container">
 
-							<input class="timepicker" data-date-format="mm/dd/yyyy">
+							<!-- Reviews -->
+							<div class="review bg-light">
+								<div class="image_scroll_box">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
+									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
 
-							<div class="wrap-input100">
-								<input class="input100" type="text" name="biodata" placeholder="Bio" style="padding: 0 30px 0 30px;">
-								<span class="focus-input100"></span>
+								</div>
+								<br>
+
+								<form class="login100-form validate-form" style="width: 100%;">
+									<div class="wrap-input100 validate-input" data-validate = "Input a valid title">
+										<input class="input100" type="text" name="review_title" placeholder="Title" style="padding: 0 30px 0 30px;">
+										<span class="focus-input100"></span>
+									</div>
+
+									<div class="wrap-input100 validate-input" data-validate = "Input a valid location">
+										<input class="input100" type="text" name="review_location" placeholder="Location" style="padding: 0 30px 0 30px;">
+										<span class="focus-input100"></span>
+									</div>
+
+									<div class="wrap-input100 validate-input" data-validate = "Write something about location">
+										<textarea class="input100" name="review_description"
+												  placeholder="Description" style="padding: 0 30px 0 30px; height: 90px;"></textarea>
+										<span class="focus-input100"></span>
+									</div>
+
+									<div class="container-login100-form-btn">
+										<button class="login100-form-btn">
+											Post
+										</button>
+									</div>
+								</form>
+
+
+
+
 							</div>
 						</div>
-
-						<div class="col-xl-5">
-							<form class="login100-form validate-form">
-								<div class="wrap-input100 validate-input" data-validate = "Input a valid username">
-									<input class="input100" type="text" name="username" placeholder="User Name" style="padding: 0 30px 0 30px;">
-									<span class="focus-input100"></span>
-								</div>
-
-								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-									<input class="input100" type="text" name="email" placeholder="Email" style="padding: 0 30px 0 30px;">
-									<span class="focus-input100"></span>
-								</div>
-
-								<div class="wrap-input100 validate-input" data-validate = "Password is required">
-									<input class="input100" type="text" name="pass" placeholder="Password" style="padding: 0 30px 0 30px;">
-									<span class="focus-input100"></span>
-								</div>
-
-								<div class="wrap-input100 validate-input" data-validate = "Confirm Password is required">
-									<input class="input100" type="text" name="confirm_pass" placeholder="Confirm Password" style="padding: 0 30px 0 30px;">
-									<span class="focus-input100"></span>
-								</div>
-
-								<div class="container-login100-form-btn">
-									<button class="login100-form-btn">
-										Sign up
-									</button>
-								</div>
-							</form>
-						</div>
-					</div>
 			  </div>
 			</div>
 		  </div>
@@ -669,9 +671,9 @@
 							</footer>
 
 							<div class="floating_button">
-								<li><a href="#" data-toggle="modal" data-target="#createPostModal">
+								<a href="#" data-toggle="modal" data-target="#createPostModal">
 									<i class="fa fa-plus my-float"></i></a>
-								</li>
+
 							</div>
 
 						</div>
