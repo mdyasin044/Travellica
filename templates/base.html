@@ -101,7 +101,10 @@
 							Member Register Form
 						</span>
 						<div class="col-xl-5">
-							<img class="img-fluid rounded-circle mb-3" src="{% static 'images/signupicon.png' %}" alt="" width="200" height="200">
+							<img class="rounded-circle mb-3" id="id_img_profilephoto" src="{% static 'images/signupicon.png' %}" alt="" width="170px" height="170px">
+
+							{% csrf_token %}
+                    		<input type='file' onchange="readURL(this);" accept="image/*"/><br><br>
 
 							<div class="wrap-input100">
 								<input class="input100" type="text" name="biodata" placeholder="Bio" style="padding: 0 30px 0 30px;">
@@ -198,7 +201,7 @@
 
 							<!-- Reviews -->
 							<div class="review bg-light">
-								<div class="image_scroll_box">
+								<div class="image_scroll_box" id="id_div_reviewpictures">
 									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
 									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
 									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
@@ -208,9 +211,10 @@
 									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
 									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
 									<img src="{% static 'images/home_slider.jpg' %}" alt="" width="300" height="100%">
-
 								</div>
 								<br>
+								{% csrf_token %}
+                    			<input type='file' onchange="readURLS(this);" accept="image/*" multiple/><br><br>
 
 								<form class="login100-form validate-form" style="width: 100%;">
 									<div class="wrap-input100 validate-input" data-validate = "Input a valid title">
@@ -387,6 +391,43 @@
 							})
 						</script>
 						<script src="{% static 'js/main.js' %}"></script>
+						<script type="text/javascript">
+							function readURL(input) {
+								if (input.files && input.files[0]) {
+									var reader = new FileReader();
+
+									reader.onload = function (e) {
+										$('#id_img_profilephoto')
+											.attr('src', e.target.result)
+									};
+
+									reader.readAsDataURL(input.files[0]);
+								}
+							}
+
+							function readURLS(e) {
+								if(!e.files || !window.FileReader) return;
+
+								var selDiv = document.querySelector("#id_div_reviewpictures");
+								selDiv.innerHTML = "";
+
+								var files = e.files;
+								var filesArr = Array.prototype.slice.call(files);
+								filesArr.forEach(function(f, i) {
+									var f = files[i];
+									if(!f.type.match("image.*")) {
+										return;
+									}
+
+									var reader = new FileReader();
+									reader.onload = function (e) {
+										var html = "<img src=\"" + e.target.result + "\" width=\"300\" height=\"100%\">";
+										selDiv.innerHTML += html;
+									}
+									reader.readAsDataURL(f);
+								});
+							}
+						</script>
 </body>
 
 </html>
