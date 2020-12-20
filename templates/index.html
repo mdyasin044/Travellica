@@ -102,17 +102,22 @@
 							<div class="destination item">
 								<div class="destination_image">
 									<div class="login100-pic js-tilt" data-tilt style="margin: 20px;">
-										<img src="{{ baseUrlOfReviews }}{{ dest.review_image.url }}" alt="">
+										<a href="destination?dest={{ dest.location }}">
+											<img src="{{ baseUrlOfReviews }}{{ dest.images.0.url }}">
+										</a>
 									</div>
 									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								</div>
 								<div class="destination_content">
-									<div class="destination_title"><a href="destinations.html">{{dest.reviewer_name}}</a>
+									<div class="destination_title"><a href="destinations.html">{{ dest.location }}</a>
 									</div>
-<!--									<div class="destination_subtitle">-->
-<!--										<p>{{dest.desc}}</p>-->
-<!--									</div>-->
-<!--									<div class="destination_price">From ${{dest.price}}</div>-->
+									<div class="destination_subtitle">
+										{% if dest.review_count == 1 %}
+										<p>{{ dest.review_count }} post</p>
+										{% else %}
+										<p>{{ dest.review_count }} posts</p>
+										{% endif %}
+									</div>
 								</div>
 							</div>
 
@@ -222,77 +227,30 @@
 					<div class="col-xl-8">
 						<div class="news_container">
 
+							{% for review in latest_reviews %}
+
 							<!-- News Post -->
-							<div
-								class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-								<div class="news_post_image"><img src="{% static 'images/news_1.jpg' %}" alt=""></div>
+							<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+								<div class="news_post_image"><img src="{{ baseUrlOfReviews }}{{ review.images.0.url }}" alt=""></div>
 								<div class="news_post_content">
-									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-										<div>02</div>
-										<div>june</div>
+									<div class="news_post_date justify-content-start">
+										<div>{{ review.date }}</div><br>
+										<div>{{ review.time }}</div>
 									</div>
-									<div class="news_post_title"><a href="#">Best tips to travel light</a>
+									<div class="news_post_title"><a href="#">{{ review.title }}</a>
 									</div>
 									<div class="news_post_category">
 										<ul>
-											<li><a href="#">lifestyle & travel</a></li>
+											<li><a href="#">{{ review.location }}</a></li>
 										</ul>
 									</div>
 									<div class="news_post_text">
-										<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget,
-											tristique at
-											leo. Vivamus massa.Tempor massa et laoreet.</p>
+										<p>{{ review.description }}</p>
 									</div>
 								</div>
 							</div>
 
-							<!-- News Post -->
-							<div
-								class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-								<div class="news_post_image"><img src="{% static 'images/news_2.jpg' %}" alt=""></div>
-								<div class="news_post_content">
-									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-										<div>01</div>
-										<div>june</div>
-									</div>
-									<div class="news_post_title"><a href="#">Best tips to travel light</a>
-									</div>
-									<div class="news_post_category">
-										<ul>
-											<li><a href="#">lifestyle & travel</a></li>
-										</ul>
-									</div>
-									<div class="news_post_text">
-										<p>Tempor massa et laoreet malesuada. Pellentesque sit amet
-											elementum ccumsan
-											sit amet mattis eget, tristique at leo.</p>
-									</div>
-								</div>
-							</div>
-
-							<!-- News Post -->
-							<div
-								class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-								<div class="news_post_image"><img src="{% static 'images/news_3.jpg' %}" alt=""></div>
-								<div class="news_post_content">
-									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-										<div>29</div>
-										<div>may</div>
-									</div>
-									<div class="news_post_title"><a href="#">Best tips to travel light</a>
-									</div>
-									<div class="news_post_category">
-										<ul>
-											<li><a href="#">lifestyle & travel</a></li>
-										</ul>
-									</div>
-									<div class="news_post_text">
-										<p>Vivamus massa.Tempor massa et laoreet malesuada. Aliquam nulla
-											nisl, accumsan
-											sit amet mattis.</p>
-									</div>
-								</div>
-							</div>
+							{% endfor %}
 
 						</div>
 					</div>

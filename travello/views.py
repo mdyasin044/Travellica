@@ -1,6 +1,53 @@
 from django.shortcuts import render
-from travello.models import User, Review, ReviewImages, ReviewInstance
+from travello.models import User, Review, ReviewImages, ReviewInstance, PopularDestination
 from datetime import datetime
+
+
+def get_all_locations():
+    locations = []
+    reviews = Review.objects.all()
+    for review in reviews:
+        if review.review_location not in locations:
+            locations.append(review.review_location)
+    return locations
+
+
+def get_popular_destinations():
+    locations = get_all_locations()
+    destinations = []
+    for location in locations:
+        dest = PopularDestination()
+        dest.images = []
+        for ri in ReviewImages.objects.filter(review_location=location):
+            dest.images.append(ri.review_image)
+        dest.location = location
+        dest.review_count = Review.objects.filter(review_location=location).count()
+        destinations.append(dest)
+    return destinations
+
+
+def get_latest_reviews():
+    reviews = Review.objects.all()
+    reviewInstances = []
+    for review in reviews:
+        instance = ReviewInstance()
+        instance.date = review.date
+        instance.time = review.time
+        instance.title = review.review_title
+        instance.location = review.review_location
+        instance.description = review.review_description
+        instance.reviewer_name = review.reviewer_name
+        instance.reviewer_image = []
+        users = User.objects.filter(username=review.reviewer_name)
+        for user in users:
+            instance.reviewer_image.append(user.profilePhoto)
+        instance.images = []
+        rimages = ReviewImages.objects.filter(date=review.date, time=review.time, reviewer_name=review.reviewer_name)
+        for img in rimages:
+            instance.images.append(img.review_image)
+        reviewInstances.append(instance)
+    reviewInstances.reverse()
+    return reviewInstances
 
 
 def common_post_method_handler(request):
@@ -33,7 +80,8 @@ def common_post_method_handler(request):
             reviewModel.save()
             for review_image in request.FILES.getlist("id_input_images"):
                 reviewImagesModel = ReviewImages(date=date_data, time=time_data, reviewer_name=reviewer_name,
-                                                 reviewer_email=reviewer_email, review_image=review_image)
+                                                 reviewer_email=reviewer_email, review_location=review_location,
+                                                 review_image=review_image)
                 reviewImagesModel.save()
             print(date_data)
             print(time_data)
@@ -44,6 +92,14 @@ def common_post_method_handler(request):
             print(review_description)
             print(request.FILES.getlist("id_input_images"))
             return True
+
+        if 'id_input_loginid' in request.POST and 'id_input_loginpass' in request.POST:
+            username = request.POST['id_input_loginid']
+            password = request.POST['id_input_loginpass']
+            users = User.objects.filter(username=username, password=password)
+            if users.count() == 1:
+                request.session['currentUser'] = username
+                return True
 
     return False
 
@@ -58,7 +114,8 @@ def index(request):
     common_post_method_handler(request)
     common_get_method_handler(request)
     return render(request, "index.html", {
-        'destinations': ReviewImages.objects.all(),
+        'destinations': get_popular_destinations(),
+        'latest_reviews': get_latest_reviews(),
         'currentUser': request.session.get('currentUser', '')
     })
 
@@ -66,8 +123,29 @@ def index(request):
 def destination(request):
     common_post_method_handler(request)
     common_get_method_handler(request)
+    if request.method == 'GET' and request.GET.get('dest', '') != '':
+        dest = request.GET.get('dest')
+        reviews = Review.objects.filter(review_location=dest)
+        reviewInstances = []
+        for review in reviews:
+            instance = ReviewInstance()
+            instance.date = review.date
+            instance.title = review.review_title
+            instance.location = review.review_location
+            instance.description = review.review_description
+            instance.reviewer_name = review.reviewer_name
+            instance.reviewer_image = []
+            users = User.objects.filter(username=review.reviewer_name)
+            for user in users:
+                instance.reviewer_image.append(user.profilePhoto)
+            instance.images = []
+            rimages = ReviewImages.objects.filter(date=review.date, time=review.time, reviewer_name=review.reviewer_name)
+            for img in rimages:
+                instance.images.append(img.review_image)
+            reviewInstances.append(instance)
+
     return render(request, "destination.html", {
-        'destinations': [],
+        'destinations': reviewInstances,
         'currentUser': request.session.get('currentUser', '')
     })
 

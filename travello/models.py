@@ -30,6 +30,7 @@ class ReviewImages(models.Model):
     time = models.CharField(max_length=40)
     reviewer_name = models.CharField(max_length=40)
     reviewer_email = models.CharField(max_length=40)
+    review_location = models.CharField(max_length=40)
     review_image = models.ImageField(upload_to='static/reviewimages')
 
     def __str__(self):
@@ -39,7 +40,15 @@ class ReviewImages(models.Model):
 class ReviewInstance:
     images = []
     date: str
+    time: str
     title: str
     location: str
     description: str
+    reviewer_image = []
+    reviewer_name: str
 
+
+class PopularDestination:
+    images = []
+    location: str
+    review_count: int

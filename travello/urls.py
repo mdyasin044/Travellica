@@ -7,5 +7,4 @@ urlpatterns = [
     path("destination", views.destination, name="destination"),
     path("profile", views.profile, name="profile"),
     path("reviewimages", views.index, name="reviewimages"),
-    # path("profile", views.profile, name="profile"),
 ]
