@@ -16,25 +16,59 @@
             <div class="row align-items-center text-center">
                 <div class="col"></div>
                 <div class="col">
-                    <img class="img-fluid rounded-circle mb-3" src="{{ baseUrlOfPhotos }}{{ searchUser.profilePhoto }}" alt="" width="150" height="150">
-                    <h5>{{ searchUser.username }}</h5>
+                    <img src="{{ baseUrlOfPhotos }}{{ searchUser.profilePhoto }}" alt="" width="120px" height="120px">
+                </div>
+				<div class="col">
+					<h4>{{ searchUser.username }}</h4>
                     <h6>{{ searchUser.bioData }}</h6>
-                </div>
+				</div>
                 <div class="col">
-                    <h4>Reviews</h4>
-                    <h5>10</h5>
+                    <h5>Reviews</h5>
+                    <h6>10</h6>
                 </div>
-                <div class="col">
-                    <h4>Follower</h4>
-                    <h5>10</h5>
-                </div>
-                <div class="col">
-                    <h4>Following</h4>
-                    <h5>10</h5>
-                </div>
-				<div class="col"></div>
+				<div class="col">
+					<a href="#" data-toggle="modal" data-target="#editBioModal">
+						<img class="img-fluid mb-3" src="{% static 'images/editicon.ico' %}" alt="" width="30" height="30">
+					</a>
+				</div>
             </div>
         </div>
+
+		<!-- Edit bio -->
+
+		<div class="modal fade" id="editBioModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<form method="POST" enctype="multipart/form-data">
+						<div class="row justify-content-center align-items-center" style="padding: 10px;">
+							{% csrf_token %}
+							<span class="login100-form-title">
+								Edit Bio
+							</span>
+
+							<div class="col-xl-12">
+								<img class="img-fluid mb-3" id="id_img_editprofilephoto" src="{% static 'images/signupicon.png' %}" alt="" width="170px" height="170px">
+
+								<input name="id_input_editprofilephoto" type='file' onchange="readEditBioURL(this);" accept="image/*"/><br><br>
+
+								<div class="wrap-input100 validate-input" data-validate = "Write something about yourself">
+									<input name="id_input_editbiodata" class="input100" type="text" placeholder="Write something about yourself" style="padding: 0 30px 0 30px;">
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="container-login100-form-btn">
+									<button class="login100-form-btn" type="submit">
+										Edit
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+			  </div>
+			</div>
+		  </div>
+		</div>
 
 		<!-- News -->
 
@@ -44,83 +78,102 @@
 					<div class="col-xl-8">
 						<div class="review_container">
 
-							{% for reviewInstance in reviewList %}
+							<!-- Nav Tabs -->
 
-							<!-- Reviews -->
-							<div class="review bg-light">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+							  <li class="nav-item">
+								<a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Posts</a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link" id="images-tab" data-toggle="tab" href="#images" role="tab" aria-controls="images" aria-selected="false">Images</a>
+							  </li>
+							</ul>
+							<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
 
-								<!-- Review Slider -->
-								<div class="review_slider_container">
-									<div class="owl-carousel owl-theme home_slider">
+								  {% for reviewInstance in reviewList %}
 
-										{% for review_image in reviewInstance.images %}
+								<!-- Reviews -->
+								<div class="review bg-light">
 
-										<!-- Slide -->
-										<div class="background_image"
-											 style="background-image:url({{ baseUrlOfReviews }}{{ review_image.url }});">
+									<!-- Review Slider -->
+									<div class="review_slider_container">
+										<div class="owl-carousel owl-theme home_slider">
+
+											{% for review_image in reviewInstance.images %}
+
+											<!-- Slide -->
+											<div class="background_image"
+												 style="background-image:url({{ baseUrlOfReviews }}{{ review_image.url }});">
+											</div>
+
+											{% endfor %}
+
 										</div>
-
-										{% endfor %}
-
 									</div>
-								</div>
-								<br>
+									<br>
 
-								<div class="row">
-									<div class="col-xl-3">
-										<div class="news_post_content">
-											<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-												<div>02</div>
-												<div>{{ reviewInstance.date }}</div>
+									<div class="row">
+										<div class="col-xl-3">
+											<div class="news_post_content">
+												<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+													<div>02</div>
+													<div>{{ reviewInstance.date }}</div>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-xl-7">
-										<div class="review_title">
-											<h4>{{ reviewInstance.title }}</h4>
+										<div class="col-xl-7">
+											<div class="review_title">
+												<h4>{{ reviewInstance.title }}</h4>
+											</div>
+											<div class="review_location">
+												<h5>{{ reviewInstance.location }}</h5>
+											</div>
 										</div>
-										<div class="review_location">
-											<h5>{{ reviewInstance.location }}</h5>
+										<div class="col-xl-2 reviewer_name">
+											<img class="img-fluid rounded-circle mb-3" src="{{ baseUrlOfPhotos }}{{ searchUser.profilePhoto }}" alt="" width="40" height="40">
+											<h6>{{ searchUser.username }}</h6>
 										</div>
 									</div>
-									<div class="col-xl-2 reviewer_name">
-										<img class="img-fluid rounded-circle mb-3" src="{{ baseUrlOfPhotos }}{{ searchUser.profilePhoto }}" alt="" width="40" height="40">
-										<h6>{{ searchUser.username }}</h6>
+
+									<div class="review_description">
+										{{ reviewInstance.description }}
 									</div>
+
+<!--									<div class="row review_likes_comments">-->
+<!--										<div class="col-xl-6"><h6>Likes: 50</h6></div>-->
+<!--										<div class="col-xl-6"><h6>Comments: 100</h6></div>-->
+<!--									</div>-->
+
+<!--									<div class="row review_comments">-->
+<!--										<div class="col-xl-1">-->
+<!--											<img class="img-fluid rounded-circle mb-3" src="{% static 'images/signupicon.png' %}" alt="" width="35" height="35">-->
+<!--										</div>-->
+<!--										<div class="col-xl-11">-->
+<!--											<h6>Commenter name</h6>-->
+<!--											Nice post!-->
+<!--										</div>-->
+<!--									</div>-->
 								</div>
 
-								<div class="review_description">
-									{{ reviewInstance.description }}
-								</div>
+								  {% endfor %}
 
-								<div class="row review_likes_comments">
-									<div class="col-xl-6"><h6>Likes: 50</h6></div>
-									<div class="col-xl-6"><h6>Comments: 100</h6></div>
-								</div>
+							  </div>
+							  <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+								  <div class="row">
 
-								<div class="row review_comments">
-									<div class="col-xl-1">
-										<img class="img-fluid rounded-circle mb-3" src="{% static 'images/signupicon.png' %}" alt="" width="35" height="35">
-									</div>
-									<div class="col-xl-11">
-										<h6>Commenter name</h6>
-										Nice post!
-									</div>
-								</div>
+									  {% for reviewInstance in reviewList %}
+									  {% for review_image in reviewInstance.images %}
 
-								<div class="row review_comments">
-									<div class="col-xl-1">
-										<img class="img-fluid rounded-circle mb-3" src="{% static 'images/signupicon.png' %}" alt="" width="35" height="35">
-									</div>
-									<div class="col-xl-11">
-										<h6>Commenter name</h6>
-										Nice post!
-									</div>
-								</div>
+									  <img src="{{ baseUrlOfReviews }}{{ review_image.url }}" width="350" height="200">
+
+									  {% endfor %}
+									  {% endfor %}
+
+								  </div>
+							  </div>
+
 							</div>
-
-							{% endfor %}
-
 						</div>
 					</div>
 
@@ -133,70 +186,56 @@
 							</div>
 							<br>
 
+							{% for review in latest_reviews %}
+
 							<!-- News Post -->
-							<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+							<div class="news_post bg-light d-flex flex-md-row flex-column align-items-start justify-content-start">
 								<div class="news_post_image js-tilt" data-tilt style="margin: 2px;">
-									<img src="{% static 'images/news_1.jpg' %}" alt="">
+									<a href="destination?name={{ review.reviewer_name }}&date={{ review.date }}&time={{ review.time }}">
+										<img src="{{ baseUrlOfReviews }}{{ review.images.0.url }}" alt="">
+									</a>
 								</div>
 								<div class="news_post_content">
-									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-										<div>02</div>
-										<div>june</div>
+									<div class="news_post_date justify-content-start">
+										<div>{{ review.date }}</div>
 									</div>
-									<div class="news_post_title"><a href="#">Destination</a>
+									<div class="news_post_title">
+										<a href="destination?name={{ review.reviewer_name }}&date={{ review.date }}&time={{ review.time }}">
+											{{ review.title }}
+										</a>
 									</div>
 									<div class="news_post_category">
 										<ul>
-											<li><a href="#">lifestyle & travel</a></li>
+											<li>
+												<a href="destination?dest={{ review.location }}">
+													{{ review.location }}
+												</a>
+											</li>
 										</ul>
 									</div>
 								</div>
 							</div>
 
-							<!-- News Post -->
-							<div
-								class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-								<div class="news_post_image js-tilt" data-tilt style="margin: 2px;">
-									<img src="{% static 'images/news_2.jpg' %}" alt="">
-								</div>
-								<div class="news_post_content">
-									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-										<div>01</div>
-										<div>june</div>
-									</div>
-									<div class="news_post_title"><a href="#">Destination</a>
-									</div>
-									<div class="news_post_category">
-										<ul>
-											<li><a href="#">lifestyle & travel</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							{% endfor %}
 
-							<!-- News Post -->
-							<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-								<div class="news_post_image js-tilt" data-tilt style="margin: 2px;">
-									<img src="{% static 'images/news_3.jpg' %}" alt="">
-								</div>
-								<div class="news_post_content">
-									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-										<div>29</div>
-										<div>may</div>
-									</div>
-									<div class="news_post_title"><a href="#">Destination</a>
-									</div>
-									<div class="news_post_category">
-										<ul>
-											<li><a href="#">lifestyle & travel</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			function readEditBioURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function (e) {
+						$('#id_img_editprofilephoto').attr('src', e.target.result)
+					};
+
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+		</script>
 
 {% endblock block_content %}

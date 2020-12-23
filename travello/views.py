@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from travello.models import User, Review, ReviewImages, ReviewInstance, PopularDestination
+from travello.models import User, Review, ReviewImages, ReviewInstance, PopularDestination, Contributor
 from datetime import datetime
 
 
@@ -33,6 +33,46 @@ def get_latest_reviews():
         instance = ReviewInstance()
         instance.date = review.date
         instance.time = review.time
+        instance.title = review.review_title
+        instance.location = review.review_location
+        instance.description = review.review_description
+        instance.reviewer_name = review.reviewer_name
+        instance.reviewer_image = []
+        users = User.objects.filter(username=review.reviewer_name)
+        for user in users:
+            instance.reviewer_image.append(user.profilePhoto)
+        instance.images = []
+        rimages = ReviewImages.objects.filter(date=review.date, time=review.time, reviewer_name=review.reviewer_name)
+        for img in rimages:
+            instance.images.append(img.review_image)
+        reviewInstances.append(instance)
+    reviewInstances.reverse()
+    return reviewInstances
+
+
+def compare_contributors(contributor):
+    return contributor.review_count
+
+
+def get_contributors():
+    users = User.objects.all()
+    contributors = []
+    for user in users:
+        contributor = Contributor()
+        contributor.username = user.username
+        contributor.biodata = user.bioData
+        contributor.image = []
+        contributor.image.append(user.profilePhoto)
+        contributor.review_count = Review.objects.filter(reviewer_name=user.username).count()
+        contributors.append(contributor)
+    return sorted(contributors, key=compare_contributors, reverse=True)
+
+
+def get_review_instances(reviews):
+    reviewInstances = []
+    for review in reviews:
+        instance = ReviewInstance()
+        instance.date = review.date
         instance.title = review.review_title
         instance.location = review.review_location
         instance.description = review.review_description
@@ -116,62 +156,58 @@ def index(request):
     return render(request, "index.html", {
         'destinations': get_popular_destinations(),
         'latest_reviews': get_latest_reviews(),
-        'currentUser': request.session.get('currentUser', '')
+        'currentUser': request.session.get('currentUser', ''),
+        'top_contributors': get_contributors()
     })
 
 
 def destination(request):
     common_post_method_handler(request)
     common_get_method_handler(request)
+    reviewInstances = []
     if request.method == 'GET' and request.GET.get('dest', '') != '':
         dest = request.GET.get('dest')
         reviews = Review.objects.filter(review_location=dest)
-        reviewInstances = []
-        for review in reviews:
-            instance = ReviewInstance()
-            instance.date = review.date
-            instance.title = review.review_title
-            instance.location = review.review_location
-            instance.description = review.review_description
-            instance.reviewer_name = review.reviewer_name
-            instance.reviewer_image = []
-            users = User.objects.filter(username=review.reviewer_name)
-            for user in users:
-                instance.reviewer_image.append(user.profilePhoto)
-            instance.images = []
-            rimages = ReviewImages.objects.filter(date=review.date, time=review.time, reviewer_name=review.reviewer_name)
-            for img in rimages:
-                instance.images.append(img.review_image)
-            reviewInstances.append(instance)
+        reviewInstances = get_review_instances(reviews)
+
+    if request.method == 'GET' and 'name' in request.GET and 'date' in request.GET and 'time' in request.GET:
+        name = request.GET['name']
+        date = request.GET['date']
+        time = request.GET['time']
+        reviews = Review.objects.filter(date=date, time=time, reviewer_name=name)
+        reviewInstances = get_review_instances(reviews)
 
     return render(request, "destination.html", {
         'destinations': reviewInstances,
-        'currentUser': request.session.get('currentUser', '')
+        'currentUser': request.session.get('currentUser', ''),
+        'latest_reviews': get_latest_reviews()
     })
 
 
 def profile(request):
     common_post_method_handler(request)
     common_get_method_handler(request)
+    reviewInstances = []
+    if request.method == 'POST' and 'id_input_editprofilephoto' in request.FILES and 'id_input_editbiodata' in request.POST:
+        profilePhoto = request.FILES['id_input_editprofilephoto']
+        bioData = request.POST['id_input_editbiodata']
+        user = User.objects.get(username=request.session.get('currentUser', ''))
+        user.profilePhoto = profilePhoto
+        user.bioData = bioData
+        user.save()
+        searchuser = [user]
+        reviews = Review.objects.filter(reviewer_name=user.username)
+        reviewInstances = get_review_instances(reviews)
+
     if request.method == 'GET' and request.GET.get('username', '') != '':
         username = request.GET.get('username')
         searchuser = User.objects.filter(username=username)
         reviews = Review.objects.filter(reviewer_name=username)
-        reviewInstances = []
-        for review in reviews:
-            instance = ReviewInstance()
-            instance.date = review.date
-            instance.title = review.review_title
-            instance.location = review.review_location
-            instance.description = review.review_description
-            instance.images = []
-            reviewImages = ReviewImages.objects.filter(date=review.date, time=review.time, reviewer_name=review.reviewer_name)
-            for img in reviewImages:
-                instance.images.append(img.review_image)
-            reviewInstances.append(instance)
+        reviewInstances = get_review_instances(reviews)
 
     return render(request, "profile.html", {
         'currentUser': request.session.get('currentUser', ''),
         'searchUser': searchuser[0],
         'reviewList': reviewInstances,
+        'latest_reviews': get_latest_reviews()
     })

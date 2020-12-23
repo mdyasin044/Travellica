@@ -52,3 +52,10 @@ class PopularDestination:
     images = []
     location: str
     review_count: int
+
+
+class Contributor:
+    image = []
+    username: str
+    biodata: str
+    review_count: int
