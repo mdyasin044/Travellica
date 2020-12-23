@@ -42,20 +42,19 @@
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
 										<li><a href="../">Home</a></li>
-										<li><a href="destination">Popular</a></li>
-										<li><a href="destination">Latest</a></li>
-										<li><a href="profile">Contributors</a></li>
+										<li><a href="destination?type=popular">Popular</a></li>
+										<li><a href="destination?type=latest">Latest</a></li>
 										<li><a href="about.html">About us</a></li>
 									</ul>
 								</nav>
 								<div class="header_phone ml-auto">
 									{% if currentUser == '' %}
-									<a href="#" data-toggle="modal" data-target="#signInModal">Sign in</a>|
+									<a href="#" data-toggle="modal" data-target="#signInModal">Sign in</a> |
 									<a href="#" data-toggle="modal" data-target="#signUpModal">Sign up</a>
 
 									{% else %}
-									Welcome <a href="/profile?username={{ currentUser }}">{{ currentUser }}</a>|
-									<a href="?signin_status=false">Sign out</a>
+									Welcome <a href="/profile?username={{ currentUser }}">{{ currentUser }}</a> |
+									<a href="../?signin_status=false">Sign out</a>
 
 									{% endif %}
 								</div>
@@ -98,15 +97,21 @@
 				<ul>
 					<li><a href="../">Home</a></li>
 					<li><a href="about.html">About us</a></li>
-					<li><a href="destination">Popular</a></li>
-					<li><a href="destination">Latest</a></li>
-					<li><a href="profile">Contributors</a></li>
+					<li><a href="destination?type=popular">Popular</a></li>
+					<li><a href="destination?type=latest">Latest</a></li>
 				</ul>
 			</div>
 			<div class="menu_social">
 				<div class="menu_phone ml-auto">
-					<a href="#" data-toggle="modal" data-target="#signInModal">Sign in </a>|
-					<a href="#" data-toggle="modal" data-target="#signUpModal">Sign up </a>
+					{% if currentUser == '' %}
+					<a href="#" data-toggle="modal" data-target="#signInModal">Sign in</a> |
+					<a href="#" data-toggle="modal" data-target="#signUpModal">Sign up</a>
+
+					{% else %}
+					Welcome <a href="/profile?username={{ currentUser }}">{{ currentUser }}</a> |
+					<a href="../?signin_status=false">Sign out</a>
+
+					{% endif %}
 				</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
@@ -135,7 +140,7 @@
 							<div class="col-xl-5">
 								<img class="rounded-circle mb-3" id="id_img_profilephoto" src="{% static 'images/signupicon.png' %}" alt="" width="170px" height="170px">
 
-								<input name="id_input_profilephoto" type='file' onchange="readURL(this);" accept="image/*"/><br><br>
+								<input name="id_input_profilephoto" type='file' onchange="readURL(this);" accept="image/*" required/><br><br>
 
 								<div class="wrap-input100 validate-input" data-validate = "Write something about yourself">
 									<input name="id_input_biodata" class="input100" type="text" placeholder="Write something about yourself" style="padding: 0 30px 0 30px;">
@@ -198,7 +203,7 @@
 							</div>
 
 							<div class="wrap-input100 validate-input" data-validate = "Password is required">
-								<input name="id_input_loginpass" class="input100" type="password" placeholder="Password">
+								<input name="id_input_loginpass" class="input100" type="password" placeholder="Password" required>
 								<span class="focus-input100"></span>
 								<span class="symbol-input100">
 									<i class="fa fa-lock" aria-hidden="true"></i>
@@ -383,11 +388,14 @@
 							</div>
 							</footer>
 
+		{% if currentUser != '' %}
 		<div class="floating_button">
 			<a href="#" data-toggle="modal" data-target="#createPostModal">
 				<i class="fa fa-plus my-float"></i>
 			</a>
 		</div>
+
+		{% endif %}
 
 	</div>
 

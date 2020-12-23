@@ -26,10 +26,16 @@
                     <h5>Reviews</h5>
                     <h6>10</h6>
                 </div>
+
 				<div class="col">
+
+					{% if currentUser == searchUser.username %}
 					<a href="#" data-toggle="modal" data-target="#editBioModal">
 						<img class="img-fluid mb-3" src="{% static 'images/editicon.ico' %}" alt="" width="30" height="30">
 					</a>
+
+					{% endif %}
+
 				</div>
             </div>
         </div>
