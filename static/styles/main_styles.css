@@ -1501,3 +1501,12 @@ section
   max-width: 12rem;
   box-shadow: 0px 5px 5px 0px #adb5bd;
 }
+
+/*********************************/
+
+.video-container {
+    height: 843px;
+    width: 1500px;
+    overflow: hidden;
+    position: relative;
+}

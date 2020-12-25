@@ -4,6 +4,13 @@
 {% static "reviewimages" as baseUrlOfReviews %}
 
 {% block block_content %}
+<div class="video-container">
+    <video autoplay muted loop height="100%" width="100%">
+        <source src="{% static 'videos/homevideo.mp4' %}" type="video/mp4"/>
+    </video>
+    <h2>Your caption here</h2>
+</div>
+
 		<!-- Home -->
 
 		<div class="home">

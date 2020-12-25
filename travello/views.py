@@ -2,6 +2,11 @@ from django.shortcuts import render
 from travello.models import User, Review, ReviewImages, ReviewInstance, PopularDestination, Contributor
 from datetime import datetime
 
+def match_instance(instance, review_list):
+    for review in review_list:
+        if instance.date == review.date and instance.time == review.time and instance.reviewer_name == review.reviewer_name:
+            review_list.remove(review)
+    return review_list
 
 def get_all_locations():
     locations = []
@@ -161,6 +166,8 @@ def destination(request):
         reviews = Review.objects.filter(date=date, time=time, reviewer_name=name)
         reviewInstances = get_review_instances(reviews)
         latestReviews = get_review_instances(Review.objects.all())
+    for inst in reviewInstances:
+        latestReviews = match_instance(inst, latestReviews)
     return render(request, "destination.html", {
         'destinations': reviewInstances,
         'currentUser': request.session.get('currentUser', ''),
@@ -187,9 +194,12 @@ def profile(request):
         searchuser = User.objects.filter(username=username)
         reviews = Review.objects.filter(reviewer_name=username)
         reviewInstances = get_review_instances(reviews)
+    latest_reviews = get_review_instances(Review.objects.all())
+    for inst in reviewInstances:
+        latest_reviews = match_instance(inst, latest_reviews)
     return render(request, "profile.html", {
         'currentUser': request.session.get('currentUser', ''),
         'searchUser': searchuser[0],
         'reviewList': reviewInstances,
-        'latest_reviews': get_review_instances(Review.objects.all())
+        'latest_reviews': latest_reviews,
     })
