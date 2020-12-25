@@ -56,10 +56,10 @@
 							<div class="col-xl-12">
 								<img class="img-fluid mb-3" id="id_img_editprofilephoto" src="{% static 'images/signupicon.png' %}" alt="" width="170px" height="170px">
 
-								<input name="id_input_editprofilephoto" type='file' onchange="readEditBioURL(this);" accept="image/*"/><br><br>
+								<input name="id_input_editprofilephoto" type='file' onchange="readEditBioURL(this);" accept="image/*" required><br><br>
 
 								<div class="wrap-input100 validate-input" data-validate = "Write something about yourself">
-									<input name="id_input_editbiodata" class="input100" type="text" placeholder="Write something about yourself" style="padding: 0 30px 0 30px;">
+									<input name="id_input_editbiodata" class="input100" type="text" placeholder="Write something about yourself" style="padding: 0 30px 0 30px;" required>
 									<span class="focus-input100"></span>
 								</div>
 

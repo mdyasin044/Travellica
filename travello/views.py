@@ -125,10 +125,13 @@ def index(request):
     common_post_method_handler(request)
     common_get_method_handler(request)
     return render(request, "index.html", {
-        'destinations': get_popular_destinations()[:4],
+        'destinations': get_popular_destinations()[:6],
         'currentUser': request.session.get('currentUser', ''),
         'latest_reviews': get_review_instances(Review.objects.all())[:4],
-        'top_contributors': get_contributors()
+        'top_contributors': get_contributors(),
+        'num_places': len(get_all_locations()),
+        'num_reviews': len(get_review_instances(Review.objects.all())),
+        'num_contributors': len(get_contributors()),
     })
 
 

@@ -18,7 +18,7 @@
 11. Footer
 12. Reviews
 13. Profile
-
+14. Contributors
 
 ******************************/
 
@@ -317,7 +317,7 @@ section
 }
 .main_nav
 {
-	margin-left: 242px;
+	margin-left: 290px;
 }
 .main_nav ul li
 {
@@ -1072,6 +1072,7 @@ section
 }
 .news_post_date div:first-child
 {
+    margin-top: 20px;
 	font-family: 'Oswald', sans-serif;
 	font-size: 22px;
 	font-weight: 400;
@@ -1124,6 +1125,7 @@ section
 .news_post_text
 {
 	margin-top: 14px;
+	margin-right:20px;
 }
 .travello
 {
@@ -1147,7 +1149,7 @@ section
 .travello_content_inner > div
 {
 	position: absolute;
-	top: 58%;
+	top: 80%;
 	width: 200%;
 	height: 100%;
 	z-index: 1;
@@ -1480,4 +1482,22 @@ section
     width: 100%;
     white-space: nowrap;
     overflow: auto;
+}
+
+/*********************************
+14. Contributors
+*********************************/
+
+.contributors {
+  padding-top: 0rem;
+  padding-bottom: 2rem;
+}
+
+.contributors .contributors-item {
+  max-width: 18rem;
+}
+
+.contributors .contributors-item img {
+  max-width: 12rem;
+  box-shadow: 0px 5px 5px 0px #adb5bd;
 }

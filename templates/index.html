@@ -72,9 +72,9 @@
 
 				<div class="home_page_nav">
 					<ul class="d-flex flex-column align-items-end justify-content-end">
-						<li><a href="#" data-scroll-to="#destinations">Places<span>01</span></a></li>
-						<li><a href="#" data-scroll-to="#news">Reviews<span>02</span></a></li>
-						<li><a href="#" data-scroll-to="#contributors">Contributors<span>03</span></a></li>
+						<li><a href="#" data-scroll-to="#destinations">Places<span>{{ num_places }}</span></a></li>
+						<li><a href="#" data-scroll-to="#news">Reviews<span>{{ num_reviews }}</span></a></li>
+						<li><a href="#" data-scroll-to="#contributors">Reviewers<span>{{ num_contributors }}</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -93,7 +93,7 @@
 					</div>
 				</div>
 				<div class="row destinations_row">
-					<div class="col">
+					<div class="col text-center">
 						<div class="destinations_container item_grid">
 
 							{% for dest in destinations %}
@@ -103,12 +103,11 @@
 								<div class="destination_image">
 									<div class="login100-pic js-tilt" data-tilt style="margin: 20px;">
 										<a href="destination?dest={{ dest.location }}">
-											<img src="{{ baseUrlOfReviews }}{{ dest.images.0.url }}">
+											<img src="{{ baseUrlOfReviews }}{{ dest.images.0.url }}" width="350px" height="200px">
 										</a>
 									</div>
-									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								</div>
-								<div class="destination_content">
+								<div class="destination_content bg-light">
 									<div class="destination_title">
 										<a href="destination?dest={{ dest.location }}">
 											{{ dest.location }}
@@ -257,7 +256,11 @@
 										</ul>
 									</div>
 									<div class="news_post_text">
+										{% if review.description|length > 150 %}
+										<p>{{ review.description|slice:150 }}...</p>
+										{% else %}
 										<p>{{ review.description }}</p>
+										{% endif %}
 									</div>
 									</a>
 								</div>
@@ -272,7 +275,7 @@
 					<div class="col-xl-4">
 						<div class="travello">
 							<div class="background_image"
-								style="background-image:url({% static 'images/travello.jpg' %})"></div>
+								style="background-image:url({% static 'images/ad.jpg' %})"></div>
 							<div class="travello_content">
 								<div class="travello_content_inner">
 									<div></div>
@@ -280,10 +283,9 @@
 								</div>
 							</div>
 							<div class="travello_container">
-								<a href="#">
+								<a href="../">
 									<div class="d-flex flex-column align-items-center justify-content-end">
-										<span class="travello_title">Get a 20% Discount</span>
-										<span class="travello_subtitle">Buy Your Vacation Online Now</span>
+										<span class="travello_subtitle">Share your experience now</span>
 									</div>
 								</a>
 							</div>
@@ -294,11 +296,11 @@
 		</div>
 
 		<!-- Contributors -->
-		  <div class="Contributors text-center bg-light" id="contributors">
+		  <div class="contributors text-center bg-light" id="contributors">
 			  <div class="row">
 				<div class="col text-center">
 					<div class="section_title">
-						<h2>Top Contributors</h2>
+						<h2>Top Reviewers</h2>
 					</div>
 				</div>
 			  </div> <br> <br>
@@ -308,7 +310,7 @@
 				{% for contributor in top_contributors %}
 
 				<div class="col-lg-2">
-				  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+				  <div class="contributors-item mx-auto mb-5 mb-lg-0">
 					  <a href="profile?username={{ contributor.username }}">
 						  <img class="img-fluid rounded-circle mb-3" src="{{ baseUrlOfPhotos }}{{ contributor.image.0.url }}" alt="">
 						  <h5>{{ contributor.username }}</h5>

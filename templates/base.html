@@ -130,7 +130,7 @@
 		  <div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-					<form method="POST" enctype="multipart/form-data">
+					<form method="POST" enctype="multipart/form-data" action="../">
 						<div class="row justify-content-center align-items-center" style="padding: 10px;">
 							{% csrf_token %}
 							<span class="login100-form-title">
@@ -140,27 +140,27 @@
 							<div class="col-xl-5">
 								<img class="rounded-circle mb-3" id="id_img_profilephoto" src="{% static 'images/signupicon.png' %}" alt="" width="170px" height="170px">
 
-								<input name="id_input_profilephoto" type='file' onchange="readURL(this);" accept="image/*" required/><br><br>
+								<input name="id_input_profilephoto" type='file' onchange="readURL(this);" accept="image/*" required><br><br>
 
 								<div class="wrap-input100 validate-input" data-validate = "Write something about yourself">
-									<input name="id_input_biodata" class="input100" type="text" placeholder="Write something about yourself" style="padding: 0 30px 0 30px;">
+									<input name="id_input_biodata" class="input100" type="text" placeholder="Write something about yourself" style="padding: 0 30px 0 30px;" required>
 									<span class="focus-input100"></span>
 								</div>
 							</div>
 
 							<div class="col-xl-5">
 								<div class="wrap-input100 validate-input" data-validate = "Input a valid username">
-									<input name="id_input_username" class="input100" type="text" placeholder="User Name" style="padding: 0 30px 0 30px;">
+									<input name="id_input_username" class="input100" type="text" placeholder="User Name" style="padding: 0 30px 0 30px;" required>
 									<span class="focus-input100"></span>
 								</div>
 
 								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-									<input name="id_input_email" class="input100" type="text" placeholder="Email" style="padding: 0 30px 0 30px;">
+									<input name="id_input_email" class="input100" type="text" placeholder="Email" style="padding: 0 30px 0 30px;" required>
 									<span class="focus-input100"></span>
 								</div>
 
 								<div class="wrap-input100 validate-input" data-validate = "Password is required">
-									<input name="id_input_password" class="input100" type="text" placeholder="Password" style="padding: 0 30px 0 30px;">
+									<input name="id_input_password" class="input100" type="text" placeholder="Password" style="padding: 0 30px 0 30px;" required>
 									<span class="focus-input100"></span>
 								</div>
 
@@ -188,14 +188,14 @@
 							<img src="{% static 'images/img-01.jpg' %}" alt="IMG">
 						</div>
 
-						<form class="login100-form" method="post">
+						<form class="login100-form" method="post" action="../">
 							{% csrf_token %}
 							<span class="login100-form-title">
 								Member Login
 							</span>
 
 							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-								<input name="id_input_loginid" class="input100" type="text" placeholder="Email">
+								<input name="id_input_loginid" class="input100" type="text" placeholder="Email" required>
 								<span class="focus-input100"></span>
 								<span class="symbol-input100">
 									<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -232,7 +232,7 @@
 
 							<!-- Reviews -->
 							<div class="review bg-light">
-								<form name="id_createpostform" class="login100-form" method="post" enctype="multipart/form-data" style="width: 100%;">
+								<form name="id_createpostform" class="login100-form" method="post" enctype="multipart/form-data" style="width: 100%;" action="../">
 									{% csrf_token %}
 
 									<div class="image_scroll_box" id="id_div_reviewpictures">
@@ -240,21 +240,21 @@
 									</div>
 									<br>
 
-									<input name="id_input_images" type='file' onchange="readURLS(this);" accept="image/*" multiple/><br><br>
+									<input name="id_input_images" type='file' onchange="readURLS(this);" accept="image/*" multiple required><br><br>
 
 									<div class="wrap-input100 validate-input" data-validate = "Input a valid title">
-										<input name="id_input_title" class="input100" type="text" placeholder="Title" style="padding: 0 30px 0 30px;">
+										<input name="id_input_title" class="input100" type="text" placeholder="Title" style="padding: 0 30px 0 30px;" required>
 										<span class="focus-input100"></span>
 									</div>
 
 									<div class="wrap-input100 validate-input" data-validate = "Input a valid location">
-										<input name="id_input_location" class="input100" type="text" placeholder="Location" style="padding: 0 30px 0 30px;">
+										<input name="id_input_location" class="input100" type="text" placeholder="Location" style="padding: 0 30px 0 30px;" required>
 										<span class="focus-input100"></span>
 									</div>
 
 									<div class="wrap-input100 validate-input" data-validate = "Write something about location">
 										<textarea name="id_textarea_description" class="input100"
-												  placeholder="Description" style="padding: 0 30px 0 30px; height: 90px;"></textarea>
+												  placeholder="Description" style="padding: 0 30px 0 30px; height: 90px;" required></textarea>
 										<span class="focus-input100"></span>
 									</div>
 
@@ -277,116 +277,79 @@
 		<!-- Footer -->
 
 		<footer class="footer">
-			<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer_1.jpg' %}" data-speed="0.8">
+			<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer_1.jpg' %}" data-speed="0.8"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="newsletter">
+							<div class="newsletter_title_container text-center">
+								<div class="newsletter_title">Subscribe to our newsletter to get the latest trends & news</div>
+								<div class="newsletter_subtitle"><i>Remember that happiness is a way of travel, not a destination</i></div>
 							</div>
-							<div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="newsletter">
-											<div class="newsletter_title_container text-center">
-												<div class="newsletter_title">Subscribe to our newsletter to
-													get the latest
-													trends &
-													news</div>
-												<div class="newsletter_subtitle">Join our database NOW!
-												</div>
-											</div>
-											<div class="newsletter_form_container">
-												<form action="#"
-													class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between"
-													id="newsletter_form">
-													<div
-														class="d-flex flex-md-row flex-column align-items-start justify-content-between">
-														<div><input type="text"
-																class="newsletter_input newsletter_input_name"
-																id="newsletter_input_name" placeholder="Name"
-																required="required">
-															<div class="input_border"></div>
-														</div>
-														<div><input type="email"
-																class="newsletter_input newsletter_input_email"
-																id="newsletter_input_email" placeholder="Your e-mail"
-																required="required">
-															<div class="input_border"></div>
-														</div>
-													</div>
-													<div><button class="newsletter_button">subscribe</button>
-													</div>
-												</form>
-											</div>
-										</div>
+							<div class="newsletter_form_container"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row footer_contact_row">
+					<div class="col-xl-10 offset-xl-1">
+						<div class="row">
+
+							<!-- Footer Contact Item -->
+							<div class="col-xl-4 footer_contact_col">
+								<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+									<div class="footer_contact_icon">
+										<img src="{% static 'images/sign.svg' %}" alt="">
 									</div>
-								</div>
-								<div class="row footer_contact_row">
-									<div class="col-xl-10 offset-xl-1">
-										<div class="row">
-
-											<!-- Footer Contact Item -->
-											<div class="col-xl-4 footer_contact_col">
-												<div
-													class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-													<div class="footer_contact_icon"><img
-															src="{% static 'images/sign.svg' %}" alt="">
-													</div>
-													<div class="footer_contact_title">give us a call</div>
-													<div class="footer_contact_list">
-														<ul>
-															<li>Office Landline: +44 5567 32 664 567</li>
-															<li>Mobile: +44 5567 89 3322 332</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-
-											<!-- Footer Contact Item -->
-											<div class="col-xl-4 footer_contact_col">
-												<div
-													class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-													<div class="footer_contact_icon"><img
-															src="{% static 'images/trekking.svg' %}" alt="">
-													</div>
-													<div class="footer_contact_title">come & drop by</div>
-													<div class="footer_contact_list">
-														<ul style="max-width:190px">
-															<li>4124 Barnes Street, Sanford, FL 32771</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-
-											<!-- Footer Contact Item -->
-											<div class="col-xl-4 footer_contact_col">
-												<div
-													class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-													<div class="footer_contact_icon"><img
-															src="{% static 'images/around.svg' %}" alt="">
-													</div>
-													<div class="footer_contact_title">send us a message
-													</div>
-													<div class="footer_contact_list">
-														<ul>
-															<li>youremail@gmail.com</li>
-															<li>Office@yourbusinessname.com</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-
-										</div>
+									<div class="footer_contact_title">give us a call</div>
+									<div class="footer_contact_list">
+										<ul>
+											<li>Mobile: +44 5567 89 3322 332</li>
+										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col text-center">
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;
-								<script>document.write(new Date().getFullYear());</script> All rights
-								reserved | This template
-								is made
-								with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-									target="_blank">Colorlib</a>
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+							<!-- Footer Contact Item -->
+							<div class="col-xl-4 footer_contact_col">
+								<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+									<div class="footer_contact_icon">
+										<img src="{% static 'images/trekking.svg' %}" alt="">
+									</div>
+									<div class="footer_contact_title">come & drop by</div>
+									<div class="footer_contact_list">
+										<ul style="max-width:190px">
+											<li>Dhaka, Bangladesh</li>
+										</ul>
+									</div>
+								</div>
 							</div>
-							</footer>
+
+							<!-- Footer Contact Item -->
+							<div class="col-xl-4 footer_contact_col">
+								<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+									<div class="footer_contact_icon">
+										<img src="{% static 'images/around.svg' %}" alt="">
+									</div>
+									<div class="footer_contact_title">send us a message</div>
+									<div class="footer_contact_list">
+										<ul>
+											<li>yasinsium428@gmail.com</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col text-center">
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;
+				<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
+				with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</div>
+		</footer>
 
 		{% if currentUser != '' %}
 		<div class="floating_button">
