@@ -246,6 +246,7 @@ section
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
+	filter:brightness(100%);
 }
 .nopadding
 {
