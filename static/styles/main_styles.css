@@ -1067,12 +1067,12 @@ section
 }
 .news_post_content
 {
-	width: 40%;
+	width: 50%;
 	padding-left: 20px;
 }
 .news_post_date div:first-child
 {
-    margin-top: 20px;
+    margin-top: 10px;
 	font-family: 'Oswald', sans-serif;
 	font-size: 22px;
 	font-weight: 400;
@@ -1102,7 +1102,7 @@ section
 .news_post_title a
 {
 	font-family: 'Oswald', sans-serif;
-	font-size: 28px;
+	font-size: 17px;
 	font-weight: 400;
 	color: #181818;
 }
