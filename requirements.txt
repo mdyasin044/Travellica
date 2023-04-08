@@ -19,3 +19,4 @@ virtualenvwrapper-win==1.2.6
 whitenoise==5.2.0
 zipp==3.4.0
 python-dotenv==0.21.0
+core
