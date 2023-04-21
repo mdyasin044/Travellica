@@ -4,8 +4,8 @@ A trip and travel blog site developed using Django framework.
 
 Make a visit to enjoy the blogs [here](https://travellica.onrender.com).
 
-<kbd>![travellica](https://user-images.githubusercontent.com/47979006/233024389-c1ea0809-cc25-4813-824e-8cf004ae23f4.PNG)</kbd>
-<kbd>![travellica2](https://user-images.githubusercontent.com/47979006/233025560-d6f03e6f-66f1-4ddb-9b1b-330ce7d3d9a3.PNG)</kbd>
+![travellica](https://user-images.githubusercontent.com/47979006/233024389-c1ea0809-cc25-4813-824e-8cf004ae23f4.PNG)
+![travellica2](https://user-images.githubusercontent.com/47979006/233025560-d6f03e6f-66f1-4ddb-9b1b-330ce7d3d9a3.PNG)
 
 # Technologies Used
 
